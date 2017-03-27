@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <label for="name">Name: <input type="text" name="name" id="name"/></label>
+        <label for="breed">Breed: <input type="text" name="breed" id="breed" /></label>
+        <input type="submit" value="Create" />
+    </form>
+    <table border="1px">
+
+        <thread>
+            <tr>
+                <th>Dog Name</th>
+                <th>Breed</th>
+                <th>Created at</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for dog in dogs %}
+            <tr>
+                <td>{{ dog.name }}</td>
+                <td>td{{ dog.breed }}</td>
+                <td>td{{ dog.created_at }}</td>
+                <td>td{{ dog.updated_at }}</td>
+                <td><a href="/edit/{{ dog.id }}">Edit</a> <a href="/delete/{{ dog.id }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>
